@@ -24,3 +24,18 @@ resource "aws_security_group_rule" "redis_sg_rule" {
   type = "ingress"
   cidr_blocks = ["0.0.0.0/0"]
 }
+
+resource "aws_subnet" "redis_sn" {
+  cidr_block = "10.0.0.0/24"
+  vpc_id = aws_vpc.vpc.id
+  tags = {
+    Name = "elasticache-test-sn"
+    Author = "stevehigh"
+    Provisioner = "terraform"
+  }
+}
+
+resource "aws_elasticache_subnet_group" "redis_subnet_group" {
+  name = "elasticache-test-sn-grp"
+  subnet_ids = [aws_subnet.redis_sn.id]
+}
