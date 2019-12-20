@@ -8,3 +8,7 @@ terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 terraform/terraform.tfvars
 terraform/.terraform
+terraform/.terraform.tfstate.lock.info
+
+lambda/ping.zip
+lambda/pong.zip

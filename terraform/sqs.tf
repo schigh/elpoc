@@ -10,3 +10,16 @@ resource "aws_sqs_queue" "ping_queue" {
     Provisioner = "terraform"
   }
 }
+
+resource "aws_sqs_queue" "pong_queue" {
+  name = "pong-queue"
+  max_message_size = 2048
+  delay_seconds = 60
+  receive_wait_time_seconds = 10
+  message_retention_seconds = 86400
+  tags = {
+    Name = "elasticache_poc_pong_queue"
+    Author = "stevehigh"
+    Provisioner = "terraform"
+  }
+}
